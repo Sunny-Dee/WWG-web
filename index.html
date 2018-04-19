@@ -7,31 +7,28 @@
 
     <link href="https://fonts.googleapis.com/css?family=Poiret+One:100,300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="public/css/style.css">
-    <link rel="shortcut icon" type="image/png" href="public/img/logo.png">
+    <link rel="shortcut icon" type="image/png" href="public/img/logoicon.png">
     <title>XKCD</title>
   </head>
 
   <body>
     <header class="header">
-
+      <h1>Women Who Go ChicaGO</h1>
     </header>
 
     <main>
-      <div>
-        <h1>It's funny because it's true</h1>
-      </div>
-      <div>
+      <section class="generate-section">
         <form action="/rendercomic" method="GET">
            <input type="submit" value="Get a comic"/>
         </form>
-      </div>
+      </section>
 
-      <div>
+      <section class="comic-section">
         <h2>{{.Title}}</h2>
         <p>{{.Year}}</p>
+        <img src={{.ImgURL}}>
         <p>{{.ImgURL}}</p>
-      </div>
-
+      </section>
     </main>
   </body>
 
