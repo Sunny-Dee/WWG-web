@@ -38,7 +38,7 @@ func main() {
 
 	// Start up your server!
 	fmt.Printf("Starting program.\nListening on port %s\n", port)
-	log.Fatal(http.ListenAndServe(port, nil))
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
