@@ -11,6 +11,8 @@ import (
 
 const latestComicNum = 1000
 
+// Comic shapes the response from the XKCD api into a struct that
+// we can consume.
 type Comic struct {
 	Title  string `json:"title"`
 	Year   string `json:"year"`
@@ -41,14 +43,6 @@ func fetchComic() (*Comic, error) {
 	if response.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("error status response: %d", response.StatusCode)
 	}
-
-	// this can error due to reasons that are hard
-	// to produce in tests such as network resets
-	// on the given socket
-	// respBody, err := ioutil.ReadAll(response.Body)
-	// if err != nil {
-	// 	return nil, err
-	// }
 
 	fmt.Println("response body", response.Body)
 	c := &Comic{}

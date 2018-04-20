@@ -21,13 +21,12 @@ func init() {
 	}
 
 	// Load environment variables
-	// port = os.Getenv("PORT")
+	port = os.Getenv("PORT")
 	baseURL = os.Getenv("XKCD_BASE_URL")
 }
 
 func main() {
 	// Setup your handlers!
-	port = os.Getenv("PORT")
 	http.HandleFunc("/", index)
 	http.HandleFunc("/rendercomic", renderComic)
 	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
