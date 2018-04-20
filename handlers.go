@@ -7,7 +7,7 @@ import (
 )
 
 func index(w http.ResponseWriter, r *http.Request) {
-	t, _ := template.ParseFiles("templates/index.html")
+	t, _ := template.ParseFiles("index.html")
 	t.Execute(w, nil)
 }
 
@@ -21,6 +21,6 @@ func renderComic(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	fmt.Println(xkcd.Title)
-	t, _ := template.ParseFiles("templates/index.html")
+	t, _ := template.ParseFiles("index.html")
 	t.Execute(w, xkcd)
 }

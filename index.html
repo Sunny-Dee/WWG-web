@@ -14,22 +14,26 @@
   <body>
     <header class="header">
       <h1>Women Who Go ChicaGO</h1>
+
+      <div class="generate-section">
+        <form action="/rendercomic" method="GET">
+           <input type="submit" value="Get a comic" class="generate-section-button"/>
+        </form>
+      </div>
     </header>
 
     <main>
-      <section class="generate-section">
-        <form action="/rendercomic" method="GET">
-           <input type="submit" value="Get a comic"/>
-        </form>
-      </section>
-
       <section class="comic-section">
         <h2>{{.Title}}</h2>
-        <p>{{.Year}}</p>
         <img src={{.ImgURL}}>
-        <p>{{.ImgURL}}</p>
+        <p>Published in {{.Year}}</p>
       </section>
     </main>
+
+    <footer class="footer">
+      <hr>
+      <p>Brought to you by <a href="https://github.com/Sunny-Dee">Sunny Dee</a></p>
+    </footer>
   </body>
 
 </html>
