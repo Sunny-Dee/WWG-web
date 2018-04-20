@@ -1,5 +1,5 @@
 {
-	"ImportPath": "github.com/Sunny-Dee/wwc",
+	"ImportPath": "github.com/Sunny-Dee/wwc/src",
 	"GoVersion": "go1.10",
 	"GodepVersion": "v80",
 	"Packages": [
