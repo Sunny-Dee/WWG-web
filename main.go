@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	// port    string
+	port    string
 	baseURL string
 )
 
@@ -23,15 +23,13 @@ func init() {
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
-
-	// Load environment variables
-	// port = os.Getenv("PORT")
+	port = os.Getenv("PORT")
 	baseURL = os.Getenv("XKCD_BASE_URL")
 }
 
 func main() {
+
 	// Setup your handlers!
-	port := os.Getenv("PORT")
 	http.HandleFunc("/", index)
 	http.HandleFunc("/rendercomic", renderComic)
 	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
@@ -92,14 +90,6 @@ func fetchComic() (*Comic, error) {
 	if response.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("error status response: %d", response.StatusCode)
 	}
-
-	// this can error due to reasons that are hard
-	// to produce in tests such as network resets
-	// on the given socket
-	// respBody, err := ioutil.ReadAll(response.Body)
-	// if err != nil {
-	// 	return nil, err
-	// }
 
 	fmt.Println("response body", response.Body)
 	c := &Comic{}
