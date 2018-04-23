@@ -44,8 +44,6 @@ func fetchComic() (*Comic, error) {
 	if response.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("error status response: %d", response.StatusCode)
 	}
-
-	fmt.Println("response body", response.Body)
 	c := &Comic{}
 	json.NewDecoder(response.Body).Decode(c)
 
@@ -64,7 +62,6 @@ func renderComic(w http.ResponseWriter, r *http.Request) {
 			ImgURL: "not a real url",
 		}
 	}
-	fmt.Println(xkcd.Title)
 	t, _ := template.ParseFiles("index.html")
 	t.Execute(w, xkcd)
 }

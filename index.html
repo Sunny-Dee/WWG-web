@@ -17,7 +17,7 @@
 
       <div class="generate-section">
         <form action="/rendercomic" method="GET">
-           <input type="submit" value="Get a comic" class="generate-section-button"/>
+           <input type="submit" value="click to get a comic" class="generate-section-button"/>
         </form>
       </div>
     </header>
@@ -26,7 +26,7 @@
       <section class="comic-section">
         <h2>{{.Title}}</h2>
         <img src={{.ImgURL}}>
-        <p>Published in {{.Year}}</p>
+        <p>{{.Year}}</p>
       </section>
     </main>
 
