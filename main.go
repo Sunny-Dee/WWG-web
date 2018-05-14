@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
@@ -26,6 +27,7 @@ func init() {
 }
 
 func main() {
+
 	// Setup your handlers!
 	http.HandleFunc("/", index)
 	http.HandleFunc("/rendercomic", renderComic)
@@ -33,5 +35,10 @@ func main() {
 
 	// Start up your server!
 	fmt.Printf("Starting program.\nListening on port %s\n", port)
-	log.Fatal(http.ListenAndServe(port, nil))
+	log.Fatal(http.ListenAndServe(":"+port, nil))
+}
+
+func index(w http.ResponseWriter, r *http.Request) {
+	t, _ := template.ParseFiles("index.html")
+	t.Execute(w, nil)
 }

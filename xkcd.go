@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"html/template"
 	"math/rand"
 	"net/http"
 
@@ -43,8 +44,6 @@ func fetchComic() (*Comic, error) {
 	if response.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("error status response: %d", response.StatusCode)
 	}
-
-	fmt.Println("response body", response.Body)
 	c := &Comic{}
 	json.NewDecoder(response.Body).Decode(c)
 
@@ -52,4 +51,17 @@ func fetchComic() (*Comic, error) {
 
 	return c, nil
 
+}
+
+func renderComic(w http.ResponseWriter, r *http.Request) {
+	xkcd, err := fetchComic()
+	if err != nil {
+		xkcd = &Comic{
+			Title:  "Not a real title",
+			Year:   "1969",
+			ImgURL: "not a real url",
+		}
+	}
+	t, _ := template.ParseFiles("index.html")
+	t.Execute(w, xkcd)
 }
